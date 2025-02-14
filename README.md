@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's leter for you!</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #e0d4f7;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            color: white;
+            background-color: black;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .envelope {
+            position: relative;
+            width: 400px;
+            height: 280px;
+            background: #f49080;
+            border-radius: 5px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.5s;
+        }
+        .flap {
+            position: absolute;
+            width: 100%;
+            height: 160px;
+            background: #d65a50;
+            top: 0;
+            clip-path: polygon(0 0, 100% 0, 50% 80%);
+            transform-origin: top;
+            transition: transform 0.5s ease-in-out;
+        }
+        .bottom-flap {
+            position: absolute;
+            width: 100%;
+            height: 160px;
+            background: #ff7b6c;
+            bottom: 0;
+            clip-path: polygon(0 100%, 50% 20%, 100% 100%);
+            transform-origin: bottom;
+            transition: transform 0.5s ease-in-out;
+        }
+        .paper {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 360px;
+            height: 220px;
+            background: white;
+            transform: translate(-50%, -50%) translateY(100%);
+            transition: transform 0.8s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            padding: 10px;
+            box-sizing: border-box;
+            opacity: 0;
+            border-radius: 5px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        .buttons button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            border: none;
+            background-color: #ff6f61;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .buttons button:hover {
+            background-color: #ff9a8b;
+        }
+    </style>
+</head>
+<body>
+    <h1>Valentine Love Letter</h1>
+    <div class="envelope" id="envelope">
+        <div class="flap" id="flap"></div>
+        <div class="paper" id="paper">Happy Valentine’s Day! enjoy this day bond with your love once hope we had time to spare with each other i just wanted you to know that no matter what i always got your back im always here to remind you that be happy no matter what happened happy valentines again 💕</div>
+        <div class="bottom-flap" id="bottomFlap"></div>
+    </div>
+    <div class="buttons">
+        <button onclick="openEnvelope()">OPEN</button>
+        <button onclick="closeEnvelope()">CLOSE</button>
+    </div>
+
+    <script>
+        function openEnvelope() {
+            document.getElementById('flap').style.transform = 'rotateX(-120deg)';
+            document.getElementById('bottomFlap').style.transform = 'rotateX(120deg)';
+            setTimeout(() => {
+                document.getElementById('paper').style.transform = 'translate(-50%, -50%) translateY(0)';
+                document.getElementById('paper').style.opacity = '1';
+            }, 500);
+        }
+
+        function closeEnvelope() {
+            document.getElementById('paper').style.transform = 'translate(-50%, -50%) translateY(100%)';
+            document.getElementById('paper').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('flap').style.transform = 'rotateX(0)';
+                document.getElementById('bottomFlap').style.transform = 'rotateX(0)';
+            }, 500);
+        }
+    </script>
+</body>
+</html>
